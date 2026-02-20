@@ -60,23 +60,23 @@ module "eks" {
     }
   }
 
-  # access_entries = {                                                          # Only when if I want to give cluster 
-  #   # One access entry with a policy associated                               # access to any other person
-  #   example = {
-  #     kubernetes_groups = []
-  #     principal_arn     = "arn:aws:iam::608827180555:user/Sohel"
+  access_entries = {                                                          # Only when if I want to give cluster 
+    # One access entry with a policy associated                               # access to any other person
+    jenkins = {
+      kubernetes_groups = []
+      principal_arn     = "arn:aws:iam::608827180555:role/jenkins-eks-role"
 
-  #     policy_associations = {
-  #       example = {
-  #         policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-  #         access_scope = {
-  #           namespaces = ["default"]
-  #           type       = "namespace"
-  #         }
-  #       }
-  #     }
-  #   }
-  # }
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            # namespaces = ["prod-app"]
+            type       = "cluster"
+          }
+        }
+      }
+    }
+  }
 
 
   tags = {

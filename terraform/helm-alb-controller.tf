@@ -4,6 +4,13 @@ resource "helm_release" "alb_controller" {
   chart = "aws-load-balancer-controller"
   namespace = "kube-system"
 
+  
+depends_on = [
+    module.eks,
+    aws_iam_role_policy_attachment.alb_controller_attach
+  ]
+
+
   set = [ {
     name = "clusterName"
     value = module.eks.cluster_name

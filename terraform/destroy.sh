@@ -48,31 +48,31 @@ for TG_ARN in $(aws elbv2 describe-target-groups \
   aws elbv2 delete-target-group --target-group-arn "$TG_ARN" || true
 done
 
-echo "============================================"
-echo "[4] Wait for ENIs to disappear"
-echo "============================================"
+# echo "============================================"
+# echo "[4] Wait for ENIs to disappear"
+# echo "============================================"
 
-while true; do
-  ENI_COUNT=$(aws ec2 describe-network-interfaces \
-    --filters "Name=vpc-id,Values=$VPC_ID" \
-    --query "length(NetworkInterfaces)" \
-    --output text)
+# while true; do
+#   ENI_COUNT=$(aws ec2 describe-network-interfaces \
+#     --filters "Name=vpc-id,Values=$VPC_ID" \
+#     --query "length(NetworkInterfaces)" \
+#     --output text)
     
-  if [[ "$ENI_COUNT" == "0" ]]; then
-    echo "All ENIs deleted!"
-    break
-  fi
+#   if [[ "$ENI_COUNT" == "0" ]]; then
+#     echo "All ENIs deleted!"
+#     break
+#   fi
   
-  echo "ENIs still present ($ENI_COUNT)... waiting 10s"
-  sleep 10
-done
+#   echo "ENIs still present ($ENI_COUNT)... waiting 10s"
+#   sleep 10
+# done
 
-echo "============================================"
-echo "[5] Destroy EKS module"
-echo "============================================"
-terraform destroy -target=module.eks -auto-approve
+# echo "============================================"
+# echo "[5] Destroy EKS module"
+# echo "============================================"
+# terraform destroy -target=module.eks -auto-approve
 
-echo "============================================"
-echo "[6] Destroy remaining VPC resources"
-echo "============================================"
+# echo "============================================"
+# echo "[6] Destroy remaining VPC resources"
+# echo "============================================"
 terraform destroy -auto-approve

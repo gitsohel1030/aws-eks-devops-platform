@@ -3,7 +3,8 @@ terraform {
     bucket         = "sohel-eks-terraform-state-8553"
     key            = "envs/dev/terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "eks-locks"
+    # dynamodb_table = "eks-locks"
+    use_lockfile = true
     encrypt        = true
 
   }

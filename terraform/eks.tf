@@ -1,13 +1,13 @@
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0" 
+  version = "~> 20.0"
 
   cluster_name    = var.cluster_name
   cluster_version = "1.32"
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
-  control_plane_subnet_ids = module.vpc.private_subnets 
+  vpc_id                   = module.vpc.vpc_id
+  subnet_ids               = module.vpc.private_subnets
+  control_plane_subnet_ids = module.vpc.private_subnets
 
   enable_irsa = true
 
@@ -18,11 +18,11 @@ module "eks" {
   cluster_addons = {
     vpc-cni = {
       before_compute = true
-      most_recent = true
+      most_recent    = true
     }
     eks-pod-identity-agent = {
       before_compute = true
-      most_recent = true
+      most_recent    = true
     }
     coredns = {
       most_recent = true
@@ -36,7 +36,7 @@ module "eks" {
   eks_managed_node_groups = {
     example = {
 
-      instance_types = ["t3.small"]  #["c7i-flex.large"]
+      instance_types = ["t3.small"] #["c7i-flex.large"]
 
       min_size     = 2
       max_size     = 3
@@ -60,7 +60,7 @@ module "eks" {
     }
   }
 
-  access_entries = {                                                          # Only when if I want to give cluster 
+  access_entries = { # Only when if I want to give cluster 
     # One access entry with a policy associated                               # access to any other person
     jenkins = {
       kubernetes_groups = []
@@ -71,7 +71,7 @@ module "eks" {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = {
             # namespaces = ["prod-app"]
-            type       = "cluster"
+            type = "cluster"
           }
         }
       }

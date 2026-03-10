@@ -4,12 +4,12 @@ data "aws_iam_policy_document" "alb_controller_assume_role" {
 
     principals {
       type        = "Federated"
-      identifiers = [module.eks.oidc_provider_arn]
+      identifiers = [var.oidc_provider_arn]
     }
 
     condition {
       test     = "StringEquals"
-      variable = "${replace(module.eks.cluster_oidc_issuer_url, "https://", "")}:sub"
+      variable = "${replace(var.cluster_oidc_issuer_url, "https://", "")}:sub"
       values   = ["system:serviceaccount:kube-system:aws-load-balancer-controller"]
     }
   }

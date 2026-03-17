@@ -1,0 +1,59 @@
+{
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+        "creationTimestamp": "2026-03-10T10:41:20Z",
+        "deletionTimestamp": "2026-03-10T12:36:45Z",
+        "labels": {
+            "kubernetes.io/metadata.name": "argocd"
+        },
+        "name": "argocd",
+        "resourceVersion": "32256",
+        "uid": "bf975fcf-336b-41f6-9d90-3d49c1e95b33"
+    },
+    "spec": {
+        "finalizers": [
+            "kubernetes"
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-03-10T12:36:50Z",
+                "message": "Discovery failed for some groups, 1 failing: unable to retrieve the complete list of server APIs: metrics.eks.amazonaws.com/v1: stale GroupVersion discovery: metrics.eks.amazonaws.com/v1",
+                "reason": "DiscoveryFailed",
+                "status": "True",
+                "type": "NamespaceDeletionDiscoveryFailure"
+            },
+            {
+                "lastTransitionTime": "2026-03-10T12:36:52Z",
+                "message": "All legacy kube types successfully parsed",
+                "reason": "ParsedGroupVersions",
+                "status": "False",
+                "type": "NamespaceDeletionGroupVersionParsingFailure"
+            },
+            {
+                "lastTransitionTime": "2026-03-10T12:36:53Z",
+                "message": "All content successfully deleted, may be waiting on finalization",
+                "reason": "ContentDeleted",
+                "status": "False",
+                "type": "NamespaceDeletionContentFailure"
+            },
+            {
+                "lastTransitionTime": "2026-03-10T12:36:52Z",
+                "message": "Some resources are remaining: services. has 1 resource instances",
+                "reason": "SomeResourcesRemain",
+                "status": "True",
+                "type": "NamespaceContentRemaining"
+            },
+            {
+                "lastTransitionTime": "2026-03-10T12:36:52Z",
+                "message": "Some content in the namespace has finalizers remaining: service.k8s.aws/resources in 1 resource instances",
+                "reason": "SomeFinalizersRemain",
+                "status": "True",
+                "type": "NamespaceFinalizersRemaining"
+            }
+        ],
+        "phase": "Terminating"
+    }
+}

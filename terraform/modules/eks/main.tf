@@ -40,7 +40,7 @@ module "eks" {
   eks_managed_node_groups = {
     example = {
 
-      instance_types = ["t3.small"] #["c7i-flex.large"]
+      instance_types = ["c7i-flex.large"] #["t3.small"] 
 
       min_size     = 2
       max_size     = 3

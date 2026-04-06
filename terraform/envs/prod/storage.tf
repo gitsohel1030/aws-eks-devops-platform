@@ -30,5 +30,5 @@ resource "kubernetes_annotations" "gp2_not_default" {
     "storageclass.kubernetes.io/is-default-class" = "false"
   }
 
-  # depends_on = [ module.eks ]
+  depends_on = [ module.eks ]
 }

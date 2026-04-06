@@ -302,5 +302,5 @@ exec {
 
 | Repository | Purpose |
 |---|---|
-| [eks-devops-gitops](https://github.com/YOUR_USERNAME/eks-devops-gitops) | GitOps manifests — ArgoCD Applications, Kubernetes configs, Helm values |
-| [eks-devops-app](https://github.com/YOUR_USERNAME/eks-devops-app) | Application source — Dockerfile, Jenkinsfile, app code |
+| [eks-devops-gitops](https://github.com/gitsohel1030/eks-devops-gitops) | GitOps manifests — ArgoCD Applications, Kubernetes configs, Helm values |
+| [eks-devops-app](https://github.com/gitsohel1030/eks-devops-app) | Application source — Dockerfile, Jenkinsfile, app code |

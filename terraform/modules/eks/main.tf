@@ -42,9 +42,9 @@ module "eks" {
 
       instance_types = ["c7i-flex.large"] #["t3.small"] 
 
-      min_size     = 2
-      max_size     = 3
-      desired_size = 2
+      min_size     = 3
+      max_size     = 4
+      desired_size = 3
 
       # Disk size in GB for node root volume
       # disk_size = 20
